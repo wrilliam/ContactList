@@ -35,10 +35,6 @@ namespace ContactList
             System.Windows.Forms.Label nameLabel;
             System.Windows.Forms.Label idLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            this.contactsDataSet = new ContactList.ContactsDataSet();
-            this.contactsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.contactsTableAdapter = new ContactList.ContactsDataSetTableAdapters.ContactsTableAdapter();
-            this.tableAdapterManager = new ContactList.ContactsDataSetTableAdapters.TableAdapterManager();
             this.isFamilyCheckBox = new System.Windows.Forms.CheckBox();
             this.birthdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.phoneTextBox = new System.Windows.Forms.TextBox();
@@ -57,40 +53,36 @@ namespace ContactList
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.contactsBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.contactsBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.contactsDataGridView = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.contactsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.contactsDataSet = new ContactList.ContactsDataSet();
+            this.contactsTableAdapter = new ContactList.ContactsDataSetTableAdapters.ContactsTableAdapter();
+            this.tableAdapterManager = new ContactList.ContactsDataSetTableAdapters.TableAdapterManager();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             birthdateLabel = new System.Windows.Forms.Label();
             phoneLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             idLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.contactsDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contactsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contactsBindingNavigator)).BeginInit();
             this.contactsBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.contactsDataGridView)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.contactsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contactsDataSet)).BeginInit();
             this.SuspendLayout();
-            // 
-            // contactsDataSet
-            // 
-            this.contactsDataSet.DataSetName = "ContactsDataSet";
-            this.contactsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // contactsBindingSource
-            // 
-            this.contactsBindingSource.DataMember = "Contacts";
-            this.contactsBindingSource.DataSource = this.contactsDataSet;
-            // 
-            // contactsTableAdapter
-            // 
-            this.contactsTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.ContactsTableAdapter = this.contactsTableAdapter;
-            this.tableAdapterManager.UpdateOrder = ContactList.ContactsDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // isFamilyCheckBox
             // 
             this.isFamilyCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.contactsBindingSource, "IsFamily", true));
-            this.isFamilyCheckBox.Location = new System.Drawing.Point(171, 100);
+            this.isFamilyCheckBox.Location = new System.Drawing.Point(171, 109);
             this.isFamilyCheckBox.Name = "isFamilyCheckBox";
             this.isFamilyCheckBox.Size = new System.Drawing.Size(107, 24);
             this.isFamilyCheckBox.TabIndex = 10;
@@ -101,7 +93,7 @@ namespace ContactList
             // 
             this.birthdateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.contactsBindingSource, "Birthdate", true));
             this.birthdateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.birthdateDateTimePicker.Location = new System.Drawing.Point(70, 100);
+            this.birthdateDateTimePicker.Location = new System.Drawing.Point(70, 109);
             this.birthdateDateTimePicker.Name = "birthdateDateTimePicker";
             this.birthdateDateTimePicker.Size = new System.Drawing.Size(95, 20);
             this.birthdateDateTimePicker.TabIndex = 8;
@@ -109,7 +101,7 @@ namespace ContactList
             // birthdateLabel
             // 
             birthdateLabel.AutoSize = true;
-            birthdateLabel.Location = new System.Drawing.Point(12, 104);
+            birthdateLabel.Location = new System.Drawing.Point(12, 113);
             birthdateLabel.Name = "birthdateLabel";
             birthdateLabel.Size = new System.Drawing.Size(52, 13);
             birthdateLabel.TabIndex = 7;
@@ -118,7 +110,7 @@ namespace ContactList
             // phoneTextBox
             // 
             this.phoneTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactsBindingSource, "Phone", true));
-            this.phoneTextBox.Location = new System.Drawing.Point(70, 74);
+            this.phoneTextBox.Location = new System.Drawing.Point(70, 83);
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(95, 20);
             this.phoneTextBox.TabIndex = 6;
@@ -126,7 +118,7 @@ namespace ContactList
             // phoneLabel
             // 
             phoneLabel.AutoSize = true;
-            phoneLabel.Location = new System.Drawing.Point(12, 77);
+            phoneLabel.Location = new System.Drawing.Point(12, 86);
             phoneLabel.Name = "phoneLabel";
             phoneLabel.Size = new System.Drawing.Size(41, 13);
             phoneLabel.TabIndex = 5;
@@ -135,7 +127,7 @@ namespace ContactList
             // nameTextBox
             // 
             this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactsBindingSource, "Name", true));
-            this.nameTextBox.Location = new System.Drawing.Point(70, 48);
+            this.nameTextBox.Location = new System.Drawing.Point(70, 57);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(208, 20);
             this.nameTextBox.TabIndex = 4;
@@ -143,7 +135,7 @@ namespace ContactList
             // nameLabel
             // 
             nameLabel.AutoSize = true;
-            nameLabel.Location = new System.Drawing.Point(12, 51);
+            nameLabel.Location = new System.Drawing.Point(12, 60);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new System.Drawing.Size(38, 13);
             nameLabel.TabIndex = 3;
@@ -152,7 +144,7 @@ namespace ContactList
             // idTextBox
             // 
             this.idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactsBindingSource, "Id", true));
-            this.idTextBox.Location = new System.Drawing.Point(70, 22);
+            this.idTextBox.Location = new System.Drawing.Point(70, 31);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.Size = new System.Drawing.Size(57, 20);
             this.idTextBox.TabIndex = 2;
@@ -160,7 +152,7 @@ namespace ContactList
             // idLabel
             // 
             idLabel.AutoSize = true;
-            idLabel.Location = new System.Drawing.Point(12, 25);
+            idLabel.Location = new System.Drawing.Point(12, 34);
             idLabel.Name = "idLabel";
             idLabel.Size = new System.Drawing.Size(35, 13);
             idLabel.TabIndex = 1;
@@ -286,15 +278,138 @@ namespace ContactList
             this.contactsBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.contactsBindingNavigator.Name = "contactsBindingNavigator";
             this.contactsBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.contactsBindingNavigator.Size = new System.Drawing.Size(800, 25);
+            this.contactsBindingNavigator.Size = new System.Drawing.Size(424, 25);
             this.contactsBindingNavigator.TabIndex = 0;
             this.contactsBindingNavigator.Text = "bindingNavigator1";
+            // 
+            // contactsDataGridView
+            // 
+            this.contactsDataGridView.AllowUserToAddRows = false;
+            this.contactsDataGridView.AllowUserToDeleteRows = false;
+            this.contactsDataGridView.AutoGenerateColumns = false;
+            this.contactsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.contactsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewCheckBoxColumn1});
+            this.contactsDataGridView.DataSource = this.contactsBindingSource;
+            this.contactsDataGridView.Location = new System.Drawing.Point(6, 65);
+            this.contactsDataGridView.Name = "contactsDataGridView";
+            this.contactsDataGridView.ReadOnly = true;
+            this.contactsDataGridView.RowHeadersVisible = false;
+            this.contactsDataGridView.Size = new System.Drawing.Size(386, 168);
+            this.contactsDataGridView.TabIndex = 10;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.contactsDataGridView);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 139);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(398, 239);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Search";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(6, 19);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(260, 20);
+            this.textBox1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = global::ContactList.Properties.Resources.iconSearch;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(272, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(120, 40);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Search";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 46);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(226, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Enter the contact\'s name and click on Search.";
+            // 
+            // contactsBindingSource
+            // 
+            this.contactsBindingSource.DataMember = "Contacts";
+            this.contactsBindingSource.DataSource = this.contactsDataSet;
+            // 
+            // contactsDataSet
+            // 
+            this.contactsDataSet.DataSetName = "ContactsDataSet";
+            this.contactsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // contactsTableAdapter
+            // 
+            this.contactsTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.ContactsTableAdapter = this.contactsTableAdapter;
+            this.tableAdapterManager.UpdateOrder = ContactList.ContactsDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 132;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Phone";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Phone";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Birthdate";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Birthdate";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.DataPropertyName = "IsFamily";
+            this.dataGridViewCheckBoxColumn1.HeaderText = "IsFamily";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn1.Width = 50;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(424, 390);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(idLabel);
             this.Controls.Add(this.idTextBox);
             this.Controls.Add(nameLabel);
@@ -309,11 +424,14 @@ namespace ContactList
             this.Name = "FrmMain";
             this.Text = "Contact List";
             this.Load += new System.EventHandler(this.FrmMain_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.contactsDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contactsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contactsBindingNavigator)).EndInit();
             this.contactsBindingNavigator.ResumeLayout(false);
             this.contactsBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.contactsDataGridView)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.contactsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contactsDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,6 +461,16 @@ namespace ContactList
         private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
         private System.Windows.Forms.ToolStripButton contactsBindingNavigatorSaveItem;
         private System.Windows.Forms.BindingNavigator contactsBindingNavigator;
+        private System.Windows.Forms.DataGridView contactsDataGridView;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
     }
 }
 

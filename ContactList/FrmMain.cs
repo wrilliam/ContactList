@@ -39,5 +39,10 @@ namespace ContactList
             this.contactsTableAdapter.Fill(this.contactsDataSet.Contacts);
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            contactsDataGridView.DataSource = contactsTableAdapter.GetDataByName(textBox1.Text);
+        }
     }
 }
